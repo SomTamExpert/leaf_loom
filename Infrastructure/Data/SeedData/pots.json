@@ -1,6 +1,6 @@
 [
-  {"Id": "1", "Name": "dark-grey"},
-  {"Id": "2", "Name": "brown"},
-  {"Id": "3", "Name": "purple"},
-  {"Id": "4", "Name": "light-grey"}
+  {"Color": "dark-grey"},
+  {"Color": "brown"},
+  {"Color": "purple"},
+  {"Color": "light-grey"}
 ]

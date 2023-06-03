@@ -1,5 +1,4 @@
 [
-  {"Id": "2", "Name": "Outdoor Plants"},
-  {"Id": "", "Name": "Rarities"}
-
+  {"Name": "Outdoor Plants"},
+  {"Name": "Rarities"}
 ]

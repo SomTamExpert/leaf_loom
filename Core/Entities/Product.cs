@@ -6,9 +6,7 @@ namespace Core.Entities
     public string Description { get; set; }
 
     public string Care { get; set; }
-    public decimal Price { get; set; }
-
-    public string PictureUrl { get; set; }
+    public string Price { get; set; }
 
     public ProductType ProductType { get; set; }
 
@@ -17,5 +15,9 @@ namespace Core.Entities
     public Pot Pot { get; set; }
 
     public int PotId { get; set; }
+
+    public Images Images { get; set; }
+
+    public int ImagesId { get; set; }
   }
 }

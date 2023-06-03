@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230529132109_InitialCreate")]
+    [Migration("20230603095027_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -18,6 +18,29 @@ namespace Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+
+            modelBuilder.Entity("Core.Entities.Images", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Brown")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Grey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Purple")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("White")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
 
             modelBuilder.Entity("Core.Entities.Pot", b =>
                 {
@@ -40,34 +63,29 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Care")
-                        .IsRequired()
-                        .HasMaxLength(180)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(180)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ImagesId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PictureUrl")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PotId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Price")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImagesId");
 
                     b.HasIndex("PotId");
 
@@ -92,6 +110,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
+                    b.HasOne("Core.Entities.Images", "Images")
+                        .WithMany()
+                        .HasForeignKey("ImagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Pot", "Pot")
                         .WithMany()
                         .HasForeignKey("PotId")
@@ -103,6 +127,8 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Images");
 
                     b.Navigation("Pot");
 
