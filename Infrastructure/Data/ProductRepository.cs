@@ -15,12 +15,36 @@ namespace Infrastructure
 
     public async Task<Product> GetProductByIdAsync(int id)
     {
-      return await _context.Products.FindAsync(id);
+      return await _context.Products
+      .Include(p => p.ProductType)
+      .Include(p => p.Pot)
+      .Include(p => p.Images)
+      .FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<IReadOnlyList<Product>> GetProductsAsync()
     {
-      return await _context.Products.ToListAsync();
+      return await _context.Products
+      .Include(p => p.ProductType)
+      .Include(p => p.Pot)
+      .Include(p => p.Images)
+      .ToListAsync();
     }
+
+    public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
+    {
+      return await _context.ProductTypes.ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<Pot>> GetPotsAsync()
+    {
+      return await _context.Pots.ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<Images>> GetImagesAsync()
+    {
+      return await _context.Images.ToListAsync();
+    }
+
   }
 }
