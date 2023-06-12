@@ -31,7 +31,7 @@ namespace API.Controllers
 
     [HttpGet]
     public async Task<ActionResult<Pagination<ProductToReturnDTO>>> GetProductsAsync(
-      [FromQuery]ProductSpecParams productParams)
+      [FromQuery] ProductSpecParams productParams)
     {
       var spec = new ProductsWithTypesAndPotsAndImagesSpecification(productParams);
       var countSpec = new ProductWithFiltersForCountSpecification(productParams);
@@ -50,6 +50,22 @@ namespace API.Controllers
       var product = await _productsRepo.GetEntityWithSpec(spec);
       if (product == null) return NotFound(new ApiResponse(404));
       return _mapper.Map<Product, ProductToReturnDTO>(product);
+    }
+    [HttpGet("product/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Product>> GetProductByIdAsync(int id)
+    {
+      var spec = new ProductsWithTypesAndPotsAndImagesSpecification(id);
+      var product = await _productsRepo.GetEntityWithSpec(spec);
+      if (product == null) return NotFound(new ApiResponse(404));
+      ImagesToReturnDTO imagesToReturnDTO = _mapper.Map<Images, ImagesToReturnDTO>(product.Images);
+      product.Images.Brown = imagesToReturnDTO.Brown;
+      product.Images.Grey = imagesToReturnDTO.Grey;
+      product.Images.Purple = imagesToReturnDTO.Purple;
+      product.Images.White = imagesToReturnDTO.White;
+      System.Console.WriteLine(product.Images.Brown);
+      return product;
     }
 
     [HttpGet("types")]

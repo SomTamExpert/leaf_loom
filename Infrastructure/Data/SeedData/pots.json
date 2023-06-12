@@ -1,6 +1,6 @@
 [
-  {"Color": "dark-grey"},
-  {"Color": "brown"},
-  {"Color": "purple"},
-  {"Color": "light-grey"}
+  {"Color": "grey", "Value": "454545"},
+  {"Color": "brown", "Value": "472b1c"},
+  {"Color": "purple", "Value": "754f73"},
+  {"Color": "white", "Value": "b2b0a9"}
 ]

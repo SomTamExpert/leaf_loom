@@ -48,6 +48,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Pots");

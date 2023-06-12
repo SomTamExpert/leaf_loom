@@ -7,7 +7,7 @@
 {"White": "images/products/sechaupila_white_pot.png", "Brown": "images/products/sechaupila_brown_pot.png", "Purple": "images/products/sechaupila_purple_pot.png","Grey": "images/products/sechaupila_grey_pot.png"},
 {"White": "images/products/califelizialae_white_pot.png", "Brown": "images/products/califelizialae_brown_pot.png", "Purple": "images/products/califelizialae_purple_pot.png","Grey": "images/products/califelizialae_grey_pot.png"},
 {"White": "images/products/farfalla_white_pot.png", "Brown": "images/products/farfalla_brown_pot.png", "Purple": "images/products/farfalla_purple_pot.png","Grey": "images/products/farfalla_grey_pot.png"},
-{"White": "images/products/girfurdol_white_pot.png", "Brown": "images/products/girfurdol_brown_pot.png", "Purple": "images/products/girfurdol_purple_pot.png","Grey": "images/products/girfurdol_grey_pot.png"},
+{"White": "images/products/gifurdol_white_pot.png", "Brown": "images/products/gifurdol_brown_pot.png", "Purple": "images/products/gifurdol_purple_pot.png","Grey": "images/products/gifurdol_grey_pot.png"},
 {"White": "images/products/glunga_white_pot.png", "Brown": "images/products/glunga_brown_pot.png", "Purple": "images/products/glunga_purple_pot.png","Grey": "images/products/glunga_grey_pot.png"},
 {"White": "images/products/huminop_white_pot.png", "Brown": "images/products/huminop_brown_pot.png", "Purple": "images/products/huminop_purple_pot.png","Grey": "images/products/huminop_grey_pot.png"},
 {"White": "images/products/hydrangea_paniculata_white_pot.png", "Brown": "images/products/hydrangea_paniculata_brown_pot.png", "Purple": "images/products/hydrangea_paniculata_purple_pot.png","Grey": "images/products/hydrangea_paniculata_grey_pot.png"},
@@ -18,5 +18,6 @@
 {"White": "images/products/ozumo_white_pot.png", "Brown": "images/products/ozumo_brown_pot.png", "Purple": "images/products/ozumo_purple_pot.png","Grey": "images/products/ozumo_grey_pot.png"},
 {"White": "images/products/salamanta_white_pot.png", "Brown": "images/products/salamanta_brown_pot.png", "Purple": "images/products/salamanta_purple_pot.png","Grey": "images/products/salamanta_grey_pot.png"},
 {"White": "images/products/salvia_officinalis_white_pot.png", "Brown": "images/products/salvia_officinalis_brown_pot.png", "Purple": "images/products/salvia_officinalis_purple_pot.png","Grey": "images/products/salvia_officinalis_grey_pot.png"},
-{"White": "images/products/suslima_white_pot.png", "Brown": "images/products/suslima_brown_pot.png", "Purple": "images/products/suslima_purple_pot.png","Grey": "images/products/suslima_grey_pot.png"}
+{"White": "images/products/suslima_white_pot.png", "Brown": "images/products/suslima_brown_pot.png", "Purple": "images/products/suslima_purple_pot.png","Grey": "images/products/suslima_grey_pot.png"},
+{"White": "images/products/bundle_set_2.png", "Brown": "images/products/bundle_set_2.png", "Purple": "images/products/bundle_set_2.png","Grey": "images/products/bundle_set_2.png"}
 ]

@@ -18,7 +18,6 @@ namespace API.Helpers
       {
         return _config["ApiUrl"] + source.Images.Grey;
       }
-
       return null;
     }
   }
