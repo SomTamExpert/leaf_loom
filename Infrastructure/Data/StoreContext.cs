@@ -17,12 +17,12 @@ namespace Infrastructure.Data
 
     public DbSet<Images> Images { get; set; }
 
+    public DbSet<Review> Reviews { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
       modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
-
-    
   }
 }

@@ -18,6 +18,7 @@ namespace API.Extensions
       services.AddSwaggerGen();
       services.AddDbContext<StoreContext>(x => x.UseSqlite(config.GetConnectionString("DefaultConnection")));
       services.AddScoped<IProductRepository, ProductRepository>();
+      services.AddScoped<IReviewRepository, ReviewRepository>();
       services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       services.Configure<ApiBehaviorOptions>(options =>

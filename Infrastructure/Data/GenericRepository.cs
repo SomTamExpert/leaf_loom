@@ -19,6 +19,16 @@ namespace Infrastructure.Data
       return await	ApplySpecification(spec).CountAsync();
     }
 
+    public Task<T> CreateAsync(T entity)
+    {
+      throw new NotImplementedException();
+    }
+
+    public Task<T> DeleteAsync(T entity)
+    {
+      throw new NotImplementedException();
+    }
+
     public async Task<T> GetByIdAsync(int id)
     {
       return await _context.Set<T>().FindAsync(id);
@@ -37,6 +47,11 @@ namespace Infrastructure.Data
     public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
     {
       return await ApplySpecification(spec).ToListAsync();
+    }
+
+    public Task<T> UpdateAsync(T entity)
+    {
+      throw new NotImplementedException();
     }
 
     private IQueryable<T> ApplySpecification(ISpecification<T> spec)

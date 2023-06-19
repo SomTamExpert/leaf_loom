@@ -18,15 +18,18 @@ namespace API.Controllers
     private readonly IGenericRepository<ProductType> _productTypesRepo;
     private readonly IGenericRepository<Pot> _potsRepo;
     private readonly IGenericRepository<Images> _imagesRepo;
+
+    private readonly IGenericRepository<Review> _reviewsRepo;
     private readonly IMapper _mapper;
 
-    public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductType> productTypesRepo, IGenericRepository<Pot> potsRepo, IGenericRepository<Images> imagesRepo, IMapper mapper)
+    public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductType> productTypesRepo, IGenericRepository<Pot> potsRepo, IGenericRepository<Images> imagesRepo, IGenericRepository<Review> reviewRepo, IMapper mapper)
     {
       _productsRepo = productsRepo;
       _productTypesRepo = productTypesRepo;
       _potsRepo = potsRepo;
       _imagesRepo = imagesRepo;
       _mapper = mapper;
+      _reviewsRepo = reviewRepo;
     }
 
     [HttpGet]
@@ -41,6 +44,27 @@ namespace API.Controllers
       return Ok(new Pagination<ProductToReturnDTO>(productParams.PageIndex, productParams.PageSize, totalItems, data));
     }
 
+
+    [HttpGet("reviews")]
+    public async Task<ActionResult<Pagination<ReviewToReturnDTO>>>
+    GetReviewsAsync(
+      [FromQuery] ReviewSpecParam reviewParams)
+    {
+      var spec = new ReviewWithProductAndDateSpecification(reviewParams);
+      var countSpec = new ReviewWithFiltersForCountSpecification(reviewParams);
+      var totalItems = await _reviewsRepo.CountAsync(countSpec);
+      var reviews = await _reviewsRepo.ListAsync(spec);
+      var data = _mapper.Map<IReadOnlyList<Review>, IReadOnlyList<ReviewToReturnDTO>>(reviews);
+      return Ok(new Pagination<ReviewToReturnDTO>(reviewParams.PageIndex, reviewParams.PageSize, totalItems, data));
+    }
+
+    [HttpPost("reviews")]
+    public async Task<ActionResult<Review>> PostReviewAsync(Review review)
+    {
+      var createdReview = await _reviewsRepo.CreateAsync(review);
+      return Ok(createdReview);
+    }
+
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -51,6 +75,7 @@ namespace API.Controllers
       if (product == null) return NotFound(new ApiResponse(404));
       return _mapper.Map<Product, ProductToReturnDTO>(product);
     }
+
     [HttpGet("product/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -88,5 +113,6 @@ namespace API.Controllers
       var images = await _imagesRepo.ListAllAsync();
       return Ok(images);
     }
+
   }
 }

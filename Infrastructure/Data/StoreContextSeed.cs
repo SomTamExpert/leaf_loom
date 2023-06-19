@@ -36,6 +36,12 @@ namespace Infrastructure.Data
         var images = JsonSerializer.Deserialize<List<Images>>(imagesData);
         context.Images.AddRange(images);
       }
+      if (!context.Reviews.Any())
+      {
+        var reviewsData = File.ReadAllText("../Infrastructure/Data/SeedData/reviews.json");
+        var reviews = JsonSerializer.Deserialize<List<Review>>(reviewsData);
+        context.Reviews.AddRange(reviews);
+      }
 
       if (context.ChangeTracker.HasChanges())
       {
