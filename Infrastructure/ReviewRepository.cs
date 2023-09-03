@@ -27,7 +27,7 @@ namespace Infrastructure
 
     public Task<Review> SaveReviewAsync(Review review)
     {
-      throw new NotImplementedException();
+      return Task.FromResult(_context.Reviews.Add(review).Entity);
     }
   }
 

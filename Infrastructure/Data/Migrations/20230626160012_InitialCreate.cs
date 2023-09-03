@@ -102,6 +102,7 @@ namespace Infrastructure.Data.Migrations
                     Author = table.Column<string>(type: "TEXT", nullable: true),
                     ProductId = table.Column<int>(type: "INTEGER", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl2 = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

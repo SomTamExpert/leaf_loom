@@ -16,14 +16,15 @@ namespace Infrastructure.Data
 
     public async Task<int> CountAsync(ISpecification<T> spec)
     {
-      return await	ApplySpecification(spec).CountAsync();
+      return await ApplySpecification(spec).CountAsync();
     }
 
-    public Task<T> CreateAsync(T entity)
+    public async Task<T> CreateAsync(T entity)
     {
-      throw new NotImplementedException();
+      await _context.Set<T>().AddAsync(entity);
+      await _context.SaveChangesAsync();
+      return entity;
     }
-
     public Task<T> DeleteAsync(T entity)
     {
       throw new NotImplementedException();

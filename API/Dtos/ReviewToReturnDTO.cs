@@ -9,6 +9,7 @@ namespace API.Dtos
     public string Author { get; set; }
     public int ProductId { get; set; }
     public string ImageUrl { get; set; }
+    public string ImageUrl2 { get; set; }
     public string Date { get; set; }
   }
 }

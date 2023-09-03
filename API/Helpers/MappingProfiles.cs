@@ -29,6 +29,7 @@ namespace API.Helpers
           .ForMember(t => t.Comment, o => o.MapFrom(s => s.Comment))
           .ForMember(t => t.ProductId, o => o.MapFrom(s => s.ProductId))
           .ForMember(t => t.ImageUrl, o => o.MapFrom(s => s.ImageUrl))
+          .ForMember(t => t.ImageUrl2, o => o.MapFrom(s => s.ImageUrl2))
           .ForMember(t => t.Date, o => o.MapFrom(s => s.Date));
     }
   }
